@@ -1,0 +1,39 @@
+{
+  "skill_name": "git-commit-message",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "請幫我寫這次的 git commit 訊息。這次的改動如下：\n\n我在後台管理系統裡新增了一個「限時折扣活動」功能，讓行銷人員可以設定特定商品在指定時間區間內享有折扣。折扣可以是百分比（如打八折）或固定金額（如折 50 元）。活動期間結束後，商品會自動恢復原價，不需要人工介入。\n\n這個功能牽涉到：新增活動管理頁面、設定折扣規則的表單、以及後端計算折扣的邏輯。",
+      "expected_output": "一則符合 Conventional Commits 格式的 commit 訊息，使用繁體中文描述商業功能，type 為 feat，包含說明自動恢復原價等業務細節的 body",
+      "files": [],
+      "assertions": [
+        "commit 訊息以 feat 開頭",
+        "標題使用繁體中文描述，不出現 'implement'、'add function'、'create class' 等純工程術語",
+        "包含 body 說明業務影響（如自動恢復原價或行銷人員使用）",
+        "整體格式符合 Conventional Commits v1.0.0（有 type，標題不超過 72 字元）"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "幫我產生 git commit message。\n\ndiff --git a/src/checkout/mobile.js b/src/checkout/mobile.js\n--- a/src/checkout/mobile.js\n+++ b/src/checkout/mobile.js\n@@ -45,7 +45,7 @@ function submitOrder(payload) {\n-  const total = payload.items.reduce((sum, item) => sum + item.price, null);\n+  const total = payload.items.reduce((sum, item) => sum + item.price, 0);\n   if (total <= 0) throw new Error('Invalid total');\n   return api.post('/orders', { ...payload, total });\n }",
+      "expected_output": "一則 fix 類型的 commit 訊息，用繁體中文說明這個問題對使用者的影響（行動版結帳失敗），而非說明 null 初始值的技術細節",
+      "files": [],
+      "assertions": [
+        "commit 訊息以 fix 開頭",
+        "標題用繁體中文描述使用者感受到的問題（結帳失敗、訂單無法送出等），而非 'fix null initial value' 這類工程語言",
+        "不在標題或 body 中將 null 作為主要描述重點"
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "這次的改動是純程式碼重構，沒有功能變更。我把原本一個 3000 行的 OrderController 拆成了幾個獨立的 service class：OrderCreationService、OrderPaymentService、OrderFulfillmentService。邏輯完全沒有改變，只是把程式碼組織得更清楚，方便未來維護。請幫我寫 commit message。",
+      "expected_output": "一則 refactor 類型的 commit 訊息，可以使用工程語言（因為這是純程式碼調整），描述拆分的目的（maintainability），不需要假裝成商業語言",
+      "files": [],
+      "assertions": [
+        "commit 訊息以 refactor 開頭",
+        "標題或 body 提及拆分或重組的目的（如可維護性、未來擴充等）",
+        "格式符合 Conventional Commits v1.0.0"
+      ]
+    }
+  ]
+}
