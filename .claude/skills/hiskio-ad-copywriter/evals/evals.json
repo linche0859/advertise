@@ -1,0 +1,93 @@
+[
+  {
+    "id": "vibe-coding-fb-ad-with-news",
+    "description": "Vibe Coding FB 廣告：有時事切入點，需 WebSearch",
+    "input": "我想推 Vibe Coding 體驗課，想用最近台灣的 AI 相關新聞來切入，目標是陌生受眾，發在 FB 廣告。幫我開始。",
+    "asserts": [
+      {
+        "type": "contains",
+        "value": "問卷",
+        "description": "應觸發 Stage 1 結構化問卷"
+      },
+      {
+        "type": "contains_any",
+        "values": ["課程名稱", "發布管道", "目標受眾", "切入點", "注意事項"],
+        "description": "問卷應包含五大欄位"
+      },
+      {
+        "type": "behavior",
+        "value": "在收到使用者確認後，Stage 2 應使用 WebSearch 搜尋台灣 AI 相關新聞，並標示來源類型（當事人自述 / 媒體報導 / 官方數據）",
+        "description": "Stage 2 應執行 WebSearch 並標示資訊來源"
+      },
+      {
+        "type": "behavior",
+        "value": "Stage 3 應依 FB 廣告格式生成：開頭 3 行製造張力、段落短、結尾有明確 CTA 與場次資訊",
+        "description": "Stage 3 應符合 FB 廣告管道規格"
+      },
+      {
+        "type": "contains",
+        "value": "需要人工確認",
+        "description": "初稿應標示需要確認的引用或數字"
+      }
+    ]
+  },
+  {
+    "id": "claude-code-edm-existing-students",
+    "description": "Claude Code EDM 舊生通知：無需搜尋，使用者提供開課資訊",
+    "input": "幫我寫一封 EDM，通知已經報名 Claude Code 課程的同學，課程將在 4 月 15 日正式開課，直播時間是晚上 7 點到 9 點，記得到時候上 HiSKIO 平台觀看。",
+    "asserts": [
+      {
+        "type": "behavior",
+        "value": "應先確認管道（EDM-舊生）與受眾（已報名同學），若使用者已提供足夠資訊可直接進入生成",
+        "description": "Stage 1 確認管道與受眾"
+      },
+      {
+        "type": "behavior",
+        "value": "生成的文案語氣應像通知，不囉嗦，不重新介紹課程是什麼、老師是誰，直接給出日期、時間、平台等資訊",
+        "description": "EDM 舊生語氣應通知感強、不重複介紹"
+      },
+      {
+        "type": "not_contains",
+        "value": "Claude Code 這堂課將教你",
+        "description": "不應對已報名同學重新介紹課程內容"
+      },
+      {
+        "type": "contains_any",
+        "values": ["4 月 15 日", "4月15日", "19:00", "7 點", "HiSKIO"],
+        "description": "應包含使用者提供的開課資訊"
+      }
+    ]
+  },
+  {
+    "id": "rag-facebook-post-student-story",
+    "description": "RAG 粉專貼文：學員故事素材，老師視角",
+    "input": "我們有個學員用 RAG 課程學到的技術，幫公司內部的法務部門做了一個合約搜尋助理，以前要翻幾百份合約、花半天的工作，現在 30 秒就找到答案。老闆很驚訝，問他怎麼做到的。幫我用老師的口吻，把這個故事寫成粉專貼文，推 RAG 精準搜尋實戰這堂課。",
+    "asserts": [
+      {
+        "type": "behavior",
+        "value": "文案應使用第一人稱「我」，以老師視角來說這個學員故事",
+        "description": "粉專貼文應是老師第一人稱視角"
+      },
+      {
+        "type": "behavior",
+        "value": "開頭必須有 hook，讓人想繼續讀，不能直接以「有一個學員⋯⋯」這種平鋪直敘開場",
+        "description": "開頭需有 hook，不能平鋪直敘"
+      },
+      {
+        "type": "contains_any",
+        "values": ["30 秒", "半天", "合約"],
+        "description": "應保留學員故事中的具體數字與情境"
+      },
+      {
+        "type": "behavior",
+        "value": "故事敘述完後，應自然帶出 RAG 精準搜尋實戰課程，不硬接、不突兀",
+        "description": "課程 CTA 應自然融入故事結尾"
+      },
+      {
+        "type": "not_contains",
+        "value": "這就是 RAG 的力量",
+        "description": "避免段尾升華的 AI 味句子"
+      }
+    ]
+  }
+]
