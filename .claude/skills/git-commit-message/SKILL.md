@@ -87,6 +87,8 @@ description: >
 - `Closes #<issue-number>` — 關聯 issue
 - `Co-authored-by: <name> <email>` — 共同作者
 
+> **注意**：產生 commit 訊息時，請勿自動加入 `Co-Authored-By: Claude` 或任何 AI 工具的署名行，除非使用者明確要求。
+
 ## 輸出步驟
 
 1. **分析變更** — 理解這次 diff/摘要的商業目的
