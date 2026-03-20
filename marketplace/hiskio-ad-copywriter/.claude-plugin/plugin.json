@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "撰寫 HiSKIO 線上課程廣告文案的 Claude Code 技能，支援 FB 廣告、EDM、粉專貼文，適用於冷受眾、舊生、購物車再行銷等情境。",
   "author": {
-    "name": "HiSKIO"
+    "name": "linche0859"
   },
-  "skills": "./.claude/skills/hiskio-ad-copywriter"
+  "skills": "./skills/hiskio-ad-copywriter"
 }
