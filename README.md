@@ -15,13 +15,13 @@
 
 ## 步驟一：安裝 Plugin
 
-> 參考影片：[docs/安裝生成廣告 Plugin.mp4](docs/安裝生成廣告%20Plugin.mp4)
+<video src="docs/安裝生成廣告%20Plugin.mp4" controls width="100%"></video>
 
 ---
 
 ## 步驟二：執行廣告文案撰寫
 
-> 參考影片：[docs/介紹生成廣告 Skill 使用方式.mp4](docs/介紹生成廣告%20Skill%20使用方式.mp4)
+<video src="docs/介紹生成廣告%20Skill%20使用方式.mp4" controls width="100%"></video>
 
 1. 在專案目錄下啟動 Claude Code：
 
